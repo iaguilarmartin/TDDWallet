@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87233EAC1D40E6A600F59AB3 /* WalletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87233EAB1D40E6A600F59AB3 /* WalletTests.m */; };
+		87233EAF1D40E8A000F59AB3 /* Wallet.m in Sources */ = {isa = PBXBuildFile; fileRef = 87233EAE1D40E8A000F59AB3 /* Wallet.m */; };
 		874C14A71D3E9B0F003732DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 874C14A61D3E9B0F003732DC /* main.m */; };
 		874C14AA1D3E9B0F003732DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 874C14A91D3E9B0F003732DC /* AppDelegate.m */; };
 		874C14AD1D3E9B0F003732DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 874C14AC1D3E9B0F003732DC /* ViewController.m */; };
 		874C14B01D3E9B0F003732DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874C14AE1D3E9B0F003732DC /* Main.storyboard */; };
 		874C14B21D3E9B0F003732DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 874C14B11D3E9B0F003732DC /* Assets.xcassets */; };
 		874C14B51D3E9B0F003732DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874C14B31D3E9B0F003732DC /* LaunchScreen.storyboard */; };
-		874C14C01D3E9B0F003732DC /* TDDWalletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 874C14BF1D3E9B0F003732DC /* TDDWalletTests.m */; };
 		874C14CB1D3E9B0F003732DC /* TDDWalletUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 874C14CA1D3E9B0F003732DC /* TDDWalletUITests.m */; };
+		87D84B5F1D40C87700F90C32 /* BrokerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D84B5E1D40C87700F90C32 /* BrokerTests.m */; };
+		87D84B621D40C9B200F90C32 /* Broker.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D84B611D40C9B200F90C32 /* Broker.m */; };
+		87DFC0941D3F6B3000DD6E8D /* Money.m in Sources */ = {isa = PBXBuildFile; fileRef = 87DFC0931D3F6B3000DD6E8D /* Money.m */; };
+		87DFC09B1D3F700300DD6E8D /* NSObject+GNUStepAddons.m in Sources */ = {isa = PBXBuildFile; fileRef = 87DFC09A1D3F700300DD6E8D /* NSObject+GNUStepAddons.m */; };
+		87DFC09D1D3F71F200DD6E8D /* MoneyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87DFC09C1D3F71F200DD6E8D /* MoneyTests.m */; };
+		87DFC09E1D3F73D700DD6E8D /* Money.m in Sources */ = {isa = PBXBuildFile; fileRef = 87DFC0931D3F6B3000DD6E8D /* Money.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		87233EAB1D40E6A600F59AB3 /* WalletTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletTests.m; sourceTree = "<group>"; };
+		87233EAD1D40E8A000F59AB3 /* Wallet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wallet.h; sourceTree = "<group>"; };
+		87233EAE1D40E8A000F59AB3 /* Wallet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wallet.m; sourceTree = "<group>"; };
 		874C14A21D3E9B0F003732DC /* TDDWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDDWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		874C14A61D3E9B0F003732DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		874C14A81D3E9B0F003732DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -46,11 +56,18 @@
 		874C14B41D3E9B0F003732DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		874C14B61D3E9B0F003732DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		874C14BB1D3E9B0F003732DC /* TDDWalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TDDWalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		874C14BF1D3E9B0F003732DC /* TDDWalletTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDDWalletTests.m; sourceTree = "<group>"; };
 		874C14C11D3E9B0F003732DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		874C14C61D3E9B0F003732DC /* TDDWalletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TDDWalletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		874C14CA1D3E9B0F003732DC /* TDDWalletUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDDWalletUITests.m; sourceTree = "<group>"; };
 		874C14CC1D3E9B0F003732DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87D84B5E1D40C87700F90C32 /* BrokerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrokerTests.m; sourceTree = "<group>"; };
+		87D84B601D40C9B200F90C32 /* Broker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Broker.h; sourceTree = "<group>"; };
+		87D84B611D40C9B200F90C32 /* Broker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Broker.m; sourceTree = "<group>"; };
+		87DFC0921D3F6B3000DD6E8D /* Money.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Money.h; sourceTree = "<group>"; };
+		87DFC0931D3F6B3000DD6E8D /* Money.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Money.m; sourceTree = "<group>"; };
+		87DFC0991D3F700300DD6E8D /* NSObject+GNUStepAddons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+GNUStepAddons.h"; sourceTree = "<group>"; };
+		87DFC09A1D3F700300DD6E8D /* NSObject+GNUStepAddons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+GNUStepAddons.m"; sourceTree = "<group>"; };
+		87DFC09C1D3F71F200DD6E8D /* MoneyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoneyTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +95,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8720B4DE1D3E9DD20025CBF6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				87DFC09C1D3F71F200DD6E8D /* MoneyTests.m */,
+				87D84B5E1D40C87700F90C32 /* BrokerTests.m */,
+				87233EAB1D40E6A600F59AB3 /* WalletTests.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		874C14991D3E9B0F003732DC = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +128,8 @@
 		874C14A41D3E9B0F003732DC /* TDDWallet */ = {
 			isa = PBXGroup;
 			children = (
+				87DFC0951D3F6D3100DD6E8D /* Categories */,
+				87DFC0871D3F5C9B00DD6E8D /* Models */,
 				874C14A81D3E9B0F003732DC /* AppDelegate.h */,
 				874C14A91D3E9B0F003732DC /* AppDelegate.m */,
 				874C14AB1D3E9B0F003732DC /* ViewController.h */,
@@ -125,7 +154,7 @@
 		874C14BE1D3E9B0F003732DC /* TDDWalletTests */ = {
 			isa = PBXGroup;
 			children = (
-				874C14BF1D3E9B0F003732DC /* TDDWalletTests.m */,
+				8720B4DE1D3E9DD20025CBF6 /* Models */,
 				874C14C11D3E9B0F003732DC /* Info.plist */,
 			);
 			path = TDDWalletTests;
@@ -138,6 +167,28 @@
 				874C14CC1D3E9B0F003732DC /* Info.plist */,
 			);
 			path = TDDWalletUITests;
+			sourceTree = "<group>";
+		};
+		87DFC0871D3F5C9B00DD6E8D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				87DFC0921D3F6B3000DD6E8D /* Money.h */,
+				87DFC0931D3F6B3000DD6E8D /* Money.m */,
+				87D84B601D40C9B200F90C32 /* Broker.h */,
+				87D84B611D40C9B200F90C32 /* Broker.m */,
+				87233EAD1D40E8A000F59AB3 /* Wallet.h */,
+				87233EAE1D40E8A000F59AB3 /* Wallet.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		87DFC0951D3F6D3100DD6E8D /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				87DFC0991D3F700300DD6E8D /* NSObject+GNUStepAddons.h */,
+				87DFC09A1D3F700300DD6E8D /* NSObject+GNUStepAddons.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,8 +321,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87DFC0941D3F6B3000DD6E8D /* Money.m in Sources */,
+				87DFC09B1D3F700300DD6E8D /* NSObject+GNUStepAddons.m in Sources */,
+				87233EAF1D40E8A000F59AB3 /* Wallet.m in Sources */,
 				874C14AD1D3E9B0F003732DC /* ViewController.m in Sources */,
 				874C14AA1D3E9B0F003732DC /* AppDelegate.m in Sources */,
+				87D84B621D40C9B200F90C32 /* Broker.m in Sources */,
 				874C14A71D3E9B0F003732DC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,7 +335,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				874C14C01D3E9B0F003732DC /* TDDWalletTests.m in Sources */,
+				87233EAC1D40E6A600F59AB3 /* WalletTests.m in Sources */,
+				87D84B5F1D40C87700F90C32 /* BrokerTests.m in Sources */,
+				87DFC09E1D3F73D700DD6E8D /* Money.m in Sources */,
+				87DFC09D1D3F71F200DD6E8D /* MoneyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +556,7 @@
 				874C14D11D3E9B0F003732DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		874C14D21D3E9B0F003732DC /* Build configuration list for PBXNativeTarget "TDDWalletTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +565,7 @@
 				874C14D41D3E9B0F003732DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		874C14D51D3E9B0F003732DC /* Build configuration list for PBXNativeTarget "TDDWalletUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +574,7 @@
 				874C14D71D3E9B0F003732DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
