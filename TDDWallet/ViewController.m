@@ -24,4 +24,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)displayText:(id)sender {
+    
+    UIButton *btn = sender;
+    self.displayLabel.text = btn.titleLabel.text;
+}
 @end

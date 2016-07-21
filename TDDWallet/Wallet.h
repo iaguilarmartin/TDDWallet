@@ -10,5 +10,7 @@
 #import "Money.h"
 
 @interface Wallet : NSObject<Money>
+@property (nonatomic, readonly) NSInteger count;
 
+-(void) subscribeToMemoryWarning: (NSNotificationCenter *) nc;
 @end

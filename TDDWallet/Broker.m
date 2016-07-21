@@ -37,4 +37,16 @@
     return [NSString stringWithFormat:@"%@-%@", fromCurrency, toCurrency];
 }
 
+#pragma mark - Rates
+-(void) parseJSONRates: (NSData *) json {
+    NSError *err = nil;
+    id obj = [NSJSONSerialization JSONObjectWithData:json options:NSJSONReadingAllowFragments error:&err];
+    
+    if (obj != nil) {
+        
+    } else {
+        [NSException raise:@"NoRatesInJSONException" format:@"JSON must carry some data!"];
+    }
+}
+
 @end

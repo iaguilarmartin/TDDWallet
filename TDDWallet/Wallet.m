@@ -7,6 +7,7 @@
 //
 
 #import "Wallet.h"
+@import UIKit;
 
 @interface Wallet()
 
@@ -15,6 +16,10 @@
 @end
 
 @implementation Wallet
+
+-(NSInteger) count {
+    return self.moneys.count;
+}
 
 -(id) initWithAmount:(NSInteger)amount currency:(NSString *)currency {
     
@@ -54,6 +59,17 @@
     }
     
     return result;
+}
+
+#pragma mark - Notification
+
+-(void) subscribeToMemoryWarning: (NSNotificationCenter *) nc {
+    
+    [nc addObserver:self selector:@selector(dumpToDisk:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+}
+
+-(void) dumpToDisk: (NSNotification *) notification {
+    
 }
 
 @end
