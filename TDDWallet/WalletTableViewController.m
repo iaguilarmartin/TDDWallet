@@ -7,16 +7,24 @@
 //
 
 #import "WalletTableViewController.h"
+#import "Broker.h"
+#import "Money.h"
 
 @interface WalletTableViewController ()
 @property (nonatomic, strong) Wallet *model;
+@property (nonatomic, strong) Broker *broker;
+@property (nonatomic, strong) NSString *totalCurrency;
 @end
 
 @implementation WalletTableViewController
 
 -(id) initWithModel: (Wallet*) model {
-    if (self = [super initWithStyle:UITableViewStylePlain]) {
+    if (self = [super initWithNibName:nil bundle:nil]) {
         _model = model;
+        
+        self.totalCurrency = @"EUR";
+        self.broker = [Broker new];
+        [self.broker addRate: 2 fromCurrency: @"EUR" toCurrency: @"USD"];
     }
     
     return self;
@@ -25,80 +33,61 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.title = @"TDDWallet";
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.model.currenciesCount + 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.model.count + 1;
+    if (self.model.currenciesCount > section) {
+        NSString * currency = [self.model getCurrencyAtIndex:section];
+        return [self.model countOfMoneisForCurrency:currency] + 1;
+    } else {
+        return 1;
+    }
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    NSString * cellIdentifier = @"MoneyCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+
+    NSString * cellText;
+    
+    if (self.model.currenciesCount > indexPath.section) {
+        NSString * currency = [self.model getCurrencyAtIndex:indexPath.section];
+        if ([self.model countOfMoneisForCurrency:currency] > indexPath.row) {
+            Money *money = [self.model getMoneyForCurrency:currency atIndex:indexPath.row];
+            cellText = [NSString stringWithFormat:@"%@", money.amount];
+        } else {
+            Money *total = [self.model getTotalMoneyForCurrency:currency];
+            cellText = [NSString stringWithFormat: @"Total: %@ %@", currency, total.amount];
+        }
+    } else {
+        Money *totalMoney = [self.broker reduce:self.model toCurrency:self.totalCurrency];
+        cellText = [NSString stringWithFormat:@"%@ %@", self.totalCurrency, totalMoney.amount];
+    }
+    
+    cell.textLabel.text = cellText;
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (self.model.currenciesCount > section) {
+        NSString * currency = [self.model getCurrencyAtIndex:section];
+        return currency;
+    } else {
+        return [NSString stringWithFormat: @"Total en %@", self.totalCurrency];
+    }
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

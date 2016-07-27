@@ -57,13 +57,40 @@
     XCTAssertEqualObjects(self.button.titleLabel.text, self.label.text, @"Button and label should have the same text");
 }
 
--(void) testThatTableHasOneSection {
+//-(void) testThatTableHasOneSection {
+//    NSInteger sections = [self.walletVC numberOfSectionsInTableView: nil];
+//    XCTAssertEqual(sections, 1, @"There can be only one");
+//}
+
+//-(void) testThatNumberOfCellsIsNumberOfMoneysPlusOne {
+//    XCTAssertEqual(self.wallet.count + 1, [self.walletVC tableView:nil numberOfRowsInSection:0], @"Number of cells is the number of moneys plus 1");
+//}
+
+-(void) testThatNumberOfSectionsIsNumberOfCurrenciesPlusOne {
+    
+    NSInteger currencies = self.wallet.currenciesCount + 1;
     NSInteger sections = [self.walletVC numberOfSectionsInTableView: nil];
-    XCTAssertEqual(sections, 1, @"There can be only one");
+    
+    XCTAssertEqual(sections, currencies, @"The number of sections must equal to the number of currencies inside the wallet plus one");
 }
 
--(void) testThatNumberOfCellsIsNumberOfMoneysPlusOne {
-    XCTAssertEqual(self.wallet.count + 1, [self.walletVC tableView:nil numberOfRowsInSection:0], @"Number of cells is the number of moneys plus 1");
+-(void) testThatNumberOfCellsInSectionIsNumberOfMoneysInCurrencyPlusOne {
+    
+    for (NSInteger i = 0; i < self.wallet.currenciesCount; i++) {
+        NSString * currency = [self.wallet getCurrencyAtIndex:i];
+        NSInteger moneis = [self.wallet countOfMoneisForCurrency: currency];
+
+        NSInteger rows = [self.walletVC tableView:nil numberOfRowsInSection:i];
+        
+        XCTAssertEqual(moneis + 1, rows, @"Number of cells is the number of moneys plus 1");
+    }
+}
+
+-(void) testThatNumberOfCellsInLastSectionIsOne {
+    NSInteger lastSection = self.wallet.currenciesCount + 1;
+    NSInteger rows = [self.walletVC tableView:nil numberOfRowsInSection:lastSection];
+    
+    XCTAssertEqual(rows, 1, @"Number of cells in last section must be one");
 }
 
 @end

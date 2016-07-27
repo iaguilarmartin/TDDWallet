@@ -12,7 +12,7 @@
 @interface Wallet()
 
 @property (nonatomic, strong) NSMutableArray *moneys;
-
+@property (nonatomic, strong) NSMutableArray *currencies;
 @end
 
 @implementation Wallet
@@ -21,12 +21,19 @@
     return self.moneys.count;
 }
 
+-(NSInteger) currenciesCount {
+    return _currencies.count;
+}
+
 -(id) initWithAmount:(NSInteger)amount currency:(NSString *)currency {
     
     if (self = [super init]) {
         Money *money = [[Money alloc] initWithAmount:amount currency:currency];
         _moneys = [NSMutableArray array];
         [_moneys addObject:money];
+        
+        _currencies = [NSMutableArray array];
+        [_currencies addObject:currency];
     }
     
     return self;
@@ -34,6 +41,11 @@
 
 -(id<Money>) plus: (Money *) other {
     [self.moneys addObject:other];
+    
+    if (![self.currencies containsObject:other.currency]) {
+        [self.currencies addObject:other.currency];
+    }
+    
     return self;
 }
 
@@ -59,6 +71,52 @@
     }
     
     return result;
+}
+
+-(Money *) getTotalMoneyForCurrency: (NSString *) currency {
+    Money *result = [[Money alloc] initWithAmount:0 currency:currency];
+    
+    for (Money *each in self.moneys) {
+        if ([each.currency isEqual:currency]) {
+            result = [result plus: each];
+        }
+    }
+    
+    return result;
+}
+
+-(NSInteger) countOfMoneisForCurrency: (NSString *) currency {
+    NSInteger total = 0;
+    
+    for (Money *each in self.moneys) {
+        if ([each.currency isEqual:currency]) {
+            total = total + 1;
+        }
+    }
+    
+    return total;
+}
+
+-(NSString *) getCurrencyAtIndex: (NSInteger) index {
+    return [self.currencies objectAtIndex:index];
+}
+
+-(Money *) getMoneyForCurrency: (NSString *) currency
+                       atIndex: (NSInteger) index {
+    
+    NSInteger currentIndex = 0;
+    
+    for (Money *each in self.moneys) {
+        if ([each.currency isEqual:currency]) {
+            if (index == currentIndex) {
+                return each;
+            } else {
+                currentIndex++;
+            }
+        }
+    }
+    
+    return nil;
 }
 
 #pragma mark - Notification

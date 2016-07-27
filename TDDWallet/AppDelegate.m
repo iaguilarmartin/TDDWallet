@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "Wallet.h"
+#import "WalletTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +18,17 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    self.window = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];
+    
+    Wallet *model = [self getDummyData];
+    WalletTableViewController *vc = [[WalletTableViewController alloc] initWithModel:model];
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    
+    self.window.rootViewController = nav;
+    [self.window makeKeyAndVisible];
+    
     // Override point for customization after application launch.
     return YES;
 }
@@ -40,6 +53,16 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(Wallet *) getDummyData {
+    Wallet * wallet = [[Wallet alloc] initWithAmount:10 currency:@"USD"];
+    [wallet plus:[Money euroWithAmount:2]];
+    [wallet plus:[Money euroWithAmount:1]];
+    [wallet plus:[Money euroWithAmount:5]];
+    [wallet plus:[Money dollarWithAmount:20]];
+    [wallet plus:[Money dollarWithAmount:50]];
+    return wallet;
 }
 
 @end

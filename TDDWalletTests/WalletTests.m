@@ -12,18 +12,15 @@
 #import "Wallet.h"
 
 @interface WalletTests : XCTestCase
-
 @end
 
 @implementation WalletTests
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
@@ -38,6 +35,42 @@
     
     Money *reduced = [broker reduce:wallet toCurrency:@"USD"];
     XCTAssertEqualObjects(reduced, [Money dollarWithAmount:100], @"€40 + $20 = $100 2:1");
+}
+
+-(void) testTotalMoneisForCurrencies {
+    Wallet *wallet = [[Wallet alloc] initWithAmount: 40 currency: @"USD"];
+    [wallet plus: [Money dollarWithAmount: 20]];
+    
+    XCTAssertEqual([wallet countOfMoneisForCurrency:@"USD"], 2, @"Count of moneys must be the same as the number of moneys added");
+}
+
+-(void) testGetMoneyForACurrency {
+    Wallet *wallet = [[Wallet alloc] initWithAmount: 40 currency: @"USD"];
+    Money *twenty = [Money dollarWithAmount: 20];
+    [wallet plus: twenty];
+    
+    Money *money = [wallet getMoneyForCurrency:@"USD" atIndex:1];
+    
+    XCTAssertEqualObjects(money, twenty, @"Moneis inserted in wallet and retrieved must be the same");
+}
+
+-(void) testCalculateTotalMoneyForACurrency {
+    Wallet *wallet = [[Wallet alloc] initWithAmount: 40 currency: @"EUR"];
+    Money *twenty = [Money dollarWithAmount: 20];
+    [wallet plus: twenty];
+    
+    Money *total = [wallet getTotalMoneyForCurrency:@"USD"];
+    
+    XCTAssertEqualObjects(total, twenty, @"€40 + $20 => Total USD: $20");
+
+}
+
+-(void) testGetACurrencyInIndex {
+    Wallet *wallet = [[Wallet alloc] initWithAmount: 40 currency: @"EUR"];
+    [wallet plus: [Money dollarWithAmount: 20]];
+    
+    XCTAssertEqualObjects([wallet getCurrencyAtIndex:0], @"EUR", @"Index of currencies must be in the same position as when they were added");
+    XCTAssertEqualObjects([wallet getCurrencyAtIndex:1], @"USD", @"Index of currencies must be in the same position as when they were added");
 }
 
 @end
